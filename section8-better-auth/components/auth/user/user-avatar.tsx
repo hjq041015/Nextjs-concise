@@ -45,7 +45,7 @@ export function UserAvatar({
   )
 
   if ((isPending || sessionPending) && !user) {
-    return <Skeleton className={cn("size-8 rounded-full", className)} />
+    return <Skeleton className={cn("size-10 rounded-full", className)} />
   }
 
   const resolvedUser = user ?? session?.user
@@ -61,7 +61,7 @@ export function UserAvatar({
   return (
     <Avatar
       className={cn(
-        "size-8 bg-muted text-foreground text-sm rounded-full",
+        "size-10 bg-muted text-foreground text-base rounded-full",
         className
       )}
     >
@@ -75,7 +75,7 @@ export function UserAvatar({
       />
 
       <AvatarFallback className="text-muted-foreground!">
-        {fallback || initials || <User2 className="size-4" />}
+        {fallback || initials || <User2 className="size-5" />}
       </AvatarFallback>
     </Avatar>
   )

@@ -5,7 +5,7 @@ async function TodoList() {
   const todos = await getTodos();
 
   return (
-    <ul>
+    <ul className="mt-8">
       {todos.map((todo: any) => (
         <form
           action={toggleTodoComplete.bind(null, todo.id)}
