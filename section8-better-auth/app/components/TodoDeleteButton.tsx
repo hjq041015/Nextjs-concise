@@ -1,22 +1,24 @@
 "use client";
 
 import { TodoModel } from "@/app/generated/prisma/models";
+import { toggleTodoDelete } from "@/app/utils/actions";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useFormStatus } from "react-dom";
 
-function TodoActionButton({ todo }: { todo: TodoModel }) {
+function TodoDeleteButton({ todo }: { todo: TodoModel }) {
   const { pending } = useFormStatus();
   return (
     <Button
+      variant="destructive"
+      className="rounded-full"
       type="submit"
       disabled={pending}
-      variant="outline"
-      className="rounded-full"
+      formAction={toggleTodoDelete.bind(null, todo.id)}
     >
       {pending && <Spinner data-icon="inline-start"></Spinner>}
-      {todo.complete ? "Undo" : "Complete"}
+      {!pending && "Delete"}
     </Button>
   );
 }
-export default TodoActionButton;
+export default TodoDeleteButton;

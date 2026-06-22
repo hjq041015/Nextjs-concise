@@ -31,3 +31,12 @@ export async function toggleTodoComplete(TodoId: number) {
     revalidatePath("/");
   });
 }
+
+export async function toggleTodoDelete(TodoId: number) {
+  await prisma.todo.delete({
+    where: {
+      id: TodoId,
+    },
+  });
+  revalidatePath("/");
+}

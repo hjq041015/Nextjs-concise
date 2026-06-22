@@ -1,4 +1,5 @@
-import TodoActionButton from "@/app/components/TodoActionButton";
+import TodoDeleteButton from "@/app/components/TodoDeleteButton";
+import TodoToggleButton from "@/app/components/TodoToggleButton";
 import { getTodos, toggleTodoComplete } from "@/app/utils/actions";
 
 async function TodoList() {
@@ -9,13 +10,14 @@ async function TodoList() {
       {todos.map((todo: any) => (
         <form
           action={toggleTodoComplete.bind(null, todo.id)}
-          className="flex justify-center my-1"
+          className="flex justify-center my-1 gap-2"
           key={todo.id}
         >
           <li className={`${todo.complete ? "line-through" : ""} mr-8`}>
             {todo.text}
           </li>
-          <TodoActionButton todo={todo} />
+          <TodoToggleButton todo={todo} />
+          <TodoDeleteButton todo={todo} />
         </form>
       ))}
     </ul>
