@@ -1,5 +1,6 @@
 "use server";
 
+import { TodoCreateInput } from "@/app/generated/prisma/models";
 import prisma from "@/app/utils/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -38,5 +39,18 @@ export async function toggleTodoDelete(TodoId: number) {
       id: TodoId,
     },
   });
+  revalidatePath("/");
+}
+
+export async function ToggleTodoAdd(formData: FormData) {
+  const todoInput: TodoCreateInput = {
+    text: formData.get("text") as string,
+    complete: false,
+  };
+
+  await prisma.todo.create({
+    data: todoInput,
+  });
+
   revalidatePath("/");
 }

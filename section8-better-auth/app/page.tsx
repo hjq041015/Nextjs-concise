@@ -1,3 +1,4 @@
+import TodoAddForm from "@/app/components/TodoAddForm";
 import TodoList from "@/app/components/TodoList";
 import Loading from "@/app/loading";
 import { Suspense } from "react";
@@ -10,6 +11,7 @@ export default async function Page() {
       <hr className="my-4" />
 
       <Suspense fallback={<Loading />}>
+        <TodoAddForm />
         <TodoList />
       </Suspense>
     </main>
