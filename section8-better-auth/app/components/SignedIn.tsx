@@ -1,10 +1,9 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+"use client";
 
-async function SignedIn({ children }: { children: React.ReactNode }) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+import { authClient } from "@/lib/auth-client";
+
+function SignedIn({ children }: { children: React.ReactNode }) {
+  const { data: session } = authClient.useSession();
 
   if (!session) {
     return null;

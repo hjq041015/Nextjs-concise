@@ -34,7 +34,7 @@ export default function RootLayout({
             <SignedIn>
               <Navibar />
             </SignedIn>
-            {children}
+            <main className="flex flex-1 flex-col min-h-0">{children}</main>
           </Providers>
         </ThemeProvider>
       </body>
